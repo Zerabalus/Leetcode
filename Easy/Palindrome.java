@@ -1,4 +1,4 @@
-package Medium;
+package Easy;
 
 public class Palindrome {
     public boolean isPalindrome(int x) {
