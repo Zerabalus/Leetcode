@@ -13,12 +13,13 @@ public class PunishmentNumberOfAnInteger {
         // para almacenar el numero
         int punishmentNum = 0;
 
-        // atravesar el array
+        // Recorremos los números del 1 hasta n
         for (int curr = 1; curr <= n; curr++) {
 
             // encontrar el cuadrado
             int square = curr * curr;
 
+            // Si es válido, sumamos el cuadrado al resultado final
             if (canPartition(square, curr))
                 punishmentNum += square;
         }
@@ -27,15 +28,20 @@ public class PunishmentNumberOfAnInteger {
 
     }
 
+    // Función que verifica si podemos dividir num en partes que sumen target
     public boolean canPartition(int num, int target) {
-        // invalido
+        // Si el número es menor que el objetivo o el objetivo es negativo, no es válido
         if (num < target || target < 0)
             return false;
 
+        // Si el número es igual al objetivo, significa que encontramos una forma válida
         if (num == target)
             return true;
 
-        return (canPartition(num / 10, target - (num % 10)) || canPartition(num / 100, target - (num % 100))
-                || canPartition(num / 1000, target - (num % 1000)));
+        // Intentamos dividir el número en diferentes segmentos y verificamos si alguno
+        // funciona
+        return (canPartition(num / 10, target - (num % 10)) ||  // Tomamos el último dígito
+                canPartition(num / 100, target - (num % 100)) || // Tomamos los últimos dos dígitos
+                canPartition(num / 1000, target - (num % 1000))); // Tomamos los últimos tres dígitos
     }
 }
