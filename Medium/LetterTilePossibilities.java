@@ -16,6 +16,7 @@ Constraints:
 
 class LetterTilePossibilities {
 
+
     public int numTilePossibilities(String tiles) {
         Set<String> sequences = new HashSet<>();
         int len = tiles.length();
